@@ -30,7 +30,7 @@ CREATE TABLE `deporte` (
   `pesoDeporte` int NOT NULL,
   PRIMARY KEY (`iddeporte`),
   UNIQUE KEY `nombreActividad_UNIQUE` (`nombreDeporte`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `deporte` (
 
 LOCK TABLES `deporte` WRITE;
 /*!40000 ALTER TABLE `deporte` DISABLE KEYS */;
-INSERT INTO `deporte` VALUES (1,'voley',100);
+INSERT INTO `deporte` VALUES (1,'voley',100),(2,'futbol',1000);
 /*!40000 ALTER TABLE `deporte` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,7 +59,7 @@ CREATE TABLE `equipo` (
   UNIQUE KEY `nombre_UNIQUE` (`nombreEquipo`),
   UNIQUE KEY `color_UNIQUE` (`colorEquipo`),
   UNIQUE KEY `mascota_UNIQUE` (`mascota`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,7 @@ CREATE TABLE `equipo` (
 
 LOCK TABLES `equipo` WRITE;
 /*!40000 ALTER TABLE `equipo` DISABLE KEYS */;
-INSERT INTO `equipo` VALUES (1,'Fibra Toxica','Negro','Telito'),(2,'Control Automatico','Morado','Gorila');
+INSERT INTO `equipo` VALUES (1,'Fibra Toxica','Negro','Telito'),(2,'Control Automatico','Morado','Gorila'),(3,'Hormigon','Plomo','Hormiga');
 /*!40000 ALTER TABLE `equipo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,7 +89,7 @@ CREATE TABLE `historialpartidos` (
   KEY `fk_historialPartidos_deporte1_idx` (`deporte_iddeporte`),
   CONSTRAINT `fk_historialPartidos_deporte1` FOREIGN KEY (`deporte_iddeporte`) REFERENCES `deporte` (`iddeporte`),
   CONSTRAINT `fk_historialPartidos_partido1` FOREIGN KEY (`partido_idpartido`) REFERENCES `partido` (`idpartido`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +98,7 @@ CREATE TABLE `historialpartidos` (
 
 LOCK TABLES `historialpartidos` WRITE;
 /*!40000 ALTER TABLE `historialpartidos` DISABLE KEYS */;
-INSERT INTO `historialpartidos` VALUES (1,1,1,'2023-10-22 00:00:00'),(2,1,1,'2023-10-22 20:05:19'),(3,1,1,'2023-10-22 20:06:08'),(4,5,1,'2023-10-22 20:46:20');
+INSERT INTO `historialpartidos` VALUES (1,1,1,'2023-10-22 00:00:00'),(2,1,1,'2023-10-22 20:05:19'),(3,1,1,'2023-10-22 20:06:08'),(4,5,1,'2023-10-22 20:46:20'),(5,6,2,'2023-10-22 23:20:41'),(6,7,1,'2023-10-22 23:23:26');
 /*!40000 ALTER TABLE `historialpartidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,7 +178,7 @@ CREATE TABLE `partido` (
   KEY `fk_partido_equipo2_idx` (`equipoB`),
   CONSTRAINT `fk_partido_equipo1` FOREIGN KEY (`equipoA`) REFERENCES `equipo` (`idequipo`),
   CONSTRAINT `fk_partido_equipo2` FOREIGN KEY (`equipoB`) REFERENCES `equipo` (`idequipo`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -187,7 +187,7 @@ CREATE TABLE `partido` (
 
 LOCK TABLES `partido` WRITE;
 /*!40000 ALTER TABLE `partido` DISABLE KEYS */;
-INSERT INTO `partido` VALUES (1,2,1,10,1),(2,1,2,2,1),(3,1,2,2,1),(4,1,2,2,1),(5,1,2,2,1);
+INSERT INTO `partido` VALUES (1,2,1,10,1),(2,1,2,2,1),(3,1,2,2,1),(4,1,2,2,1),(5,1,2,2,1),(6,1,3,2,1),(7,2,3,2,1);
 /*!40000 ALTER TABLE `partido` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -200,4 +200,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-22 20:49:56
+-- Dump completed on 2023-10-22 23:28:30
