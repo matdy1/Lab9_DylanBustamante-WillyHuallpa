@@ -57,8 +57,6 @@ public class PartidoController {
             int id = Integer.parseInt(idStr);
             List<Historialpartido> list = historialPartidoRepository.obtenerHistorial(id,id);
 
-
-
             if (!list.isEmpty()) {
                 respuesta.put("result", "ok");
                 respuesta.put("producto", list);
@@ -72,7 +70,7 @@ public class PartidoController {
         }
     }
 
-    
+
 
 
 }
