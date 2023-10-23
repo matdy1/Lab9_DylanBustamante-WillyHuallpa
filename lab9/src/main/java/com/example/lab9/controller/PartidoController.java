@@ -4,8 +4,10 @@ import com.example.lab9.RegistroDeporteRequest;
 import com.example.lab9.entity.Historialpartido;
 import com.example.lab9.repository.HistorialPartidoRepository;
 import com.example.lab9.repository.PartidoRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -42,7 +44,7 @@ public class PartidoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(responseJson);
     }
 
-    @GetMapping("/gethistorialpartidos")
+    @GetMapping(value={"/gethistorialpartidos","/gethistorialpartidos/",})
     public List<Historialpartido> listaHistorialPartidos(){
         return historialPartidoRepository.findAll();
     }
@@ -69,5 +71,8 @@ public class PartidoController {
             return ResponseEntity.badRequest().body(respuesta);
         }
     }
+
+    
+
 
 }
