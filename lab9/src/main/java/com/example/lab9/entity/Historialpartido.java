@@ -2,6 +2,8 @@ package com.example.lab9.entity;
 
 import com.example.lab9.entity.Deporte;
 import com.example.lab9.entity.Partido;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,17 +14,18 @@ import java.time.Instant;
 @Setter
 @Entity
 @Table(name = "historialpartidos")
+@JsonIgnoreProperties(value = {"horaFecha"})
 public class Historialpartido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idhistorialPartidos", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "partido_idpartido", nullable = false)
     private Partido partidoIdpartido;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "deporte_iddeporte", nullable = false)
     private Deporte deporteIddeporte;
 
